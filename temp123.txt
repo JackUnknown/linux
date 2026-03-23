@@ -1,0 +1,113 @@
+2. First 20 even numbers (for loop)
+#!/bin/bash
+echo "First 20 even numbers:"
+for ((i=1; i<=20; i++))
+do
+  echo $((i * 2))
+done
+
+3. Multiplication table
+
+#!/bin/bash
+echo "Enter a number:"
+read n
+for i in {1..10}
+do
+  echo "$n x $i = $((n * i))"
+done
+
+4. Count lines, words, and characters
+
+#!/bin/bash
+echo "Enter filename:"
+read file
+if [ -f "$file" ]; then
+    lines=$(wc -l < "$file")
+    words=$(wc -w < "$file")
+    chars=$(wc -m < "$file")
+    echo "Lines: $lines, Words: $words, Characters: $chars"
+else
+    echo "File does not exist."
+fi
+
+5. Menu-driven script
+
+#!/bin/bash
+while true; do
+    echo -e "\n--- MENU ---"
+    echo "1. Date"
+    echo "2. Calendar"
+    echo "3. List Files"
+    echo "4. Exit"
+    read -p "Choose an option: " choice
+
+    case $choice in
+        1) date ;;
+        2) cal ;;
+        3) ls ;;
+        4) exit ;;
+        *) echo "Invalid option" ;;
+    esac
+done
+
+1. File type checker
+
+#!/bin/bash
+if [ -z "$1" ]; then
+    echo "Please provide a filename as an argument."
+    exit 1
+fi
+
+if [ -d "$1" ]; then
+    echo "$1 is a Directory."
+elif [ -f "$1" ]; then
+    echo "$1 is a Regular File."
+else
+    echo "$1 is something else (link/device/special)."
+fi
+
+2. Positive, Negative, or Zero
+
+
+#!/bin/bash
+read -p "Enter a number: " num
+if [ $num -gt 0 ]; then
+    echo "Positive"
+elif [ $num -lt 0 ]; then
+    echo "Negative"
+else
+    echo "Zero"
+fi
+
+
+3. Check if user is logged in
+
+#!/bin/bash
+read -p "Enter username: " user
+if who | grep -w "$user" > /dev/null; then
+    echo "User $user is logged in."
+else
+    echo "User $user is NOT logged in."
+fi
+
+
+4. First 10 natural numbers (until loop)
+
+#!/bin/bash
+i=1
+until [ $i -gt 10 ]
+do
+    echo $i
+    i=$((i + 1))
+done
+
+
+5. Functions for addition and subtraction
+
+#!/bin/bash
+add() { echo "Sum: $(($1 + $2))"; }
+sub() { echo "Difference: $(($1 - $2))"; }
+
+read -p "Enter two numbers: " a b
+add $a $b
+sub $a $b
