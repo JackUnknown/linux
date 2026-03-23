@@ -46,4 +46,3 @@ def lambda_handler(event, context):
         "statusCode": 200,
         "total_sales": total_sales
     }
-<img width="370" height="1587" alt="image" src="https://github.com/user-attachments/assets/2151c9ff-7ef6-4d6b-986f-02525332285c" />
