@@ -1,0 +1,347 @@
+#1. Write a script that asks for a user's name and prints a "Hello" message.
+
+#!/bin/bash
+
+read -p "Enter your Name: " name
+echo "Hello $name"
+
+
+#2. Create a script that takes three separate strings as input and displays them in reverse order.
+
+#!/bin/bash
+read -p "Enter first string: " str1
+read -p "Enter second string: " str2
+read -p "Enter third string: " str3
+
+echo "String in the reverse order:- "
+echo "$str3"
+echo "$str2"
+echo "$str1"
+
+#3. Write a script that asks for a user's age and calculates how many years are left until they turn 100.
+
+#!/bin/bash
+read -p "Enter the user name: " name
+read -p "Enter the user age: " age
+
+age_remain=$((100 - age))
+echo "$name age remaining for becoming 100 is :- $age_remain"
+
+
+#4. Create a script that prompts for a filename and then creates that file using `touch`.
+
+#!/bin/bash
+
+read -p "Enter the filename you want ot create:- " filename
+
+touch $filename
+
+
+#5. Write a script that asks for a directory name and lists all files inside that directory.
+
+#!/bin/bash
+
+read -p "Enter the name of directory :-" directory
+echo "The list of $directory directory for the given name are below"
+
+ls ~/$directory
+
+
+#6. Write a script to take two numbers as input and display their sum.
+
+#!/bin/bash
+
+echo "Enter the first number:- "
+read num1
+echo "Enter the second number:- "
+read num2
+
+sum=$(($num1+$num2))
+
+echo "Sum of the two numners = $sum"
+
+
+#7. Create a script that calculates the area of a rectangle (Length × Width) based on user input.
+
+#!/bin/bash
+
+echo "Enter the length :- "
+read length
+echo "Enter the breadth:- "
+read breadth
+
+area_rect=$(($length*$breadth))
+
+echo "Area of rectangle = $area_rect"
+
+
+#8. Write a script that takes a temperature in Celsius and converts it to Fahrenheit.
+
+#!/bin/bash
+
+echo "Enter the temperature in Celsius :- "
+read celsius
+
+fahrenheit=$(echo "scale=2; ($celsius*9/5)+32" | bc)
+
+echo "Conversion of $celsius celsius to fahrenheit is = $fahrenheit"
+
+
+#9. Create a script that performs all four basic operations (+, -, *, /) on two provided numbers.
+
+#!/bin/bash
+
+read -p "Enter the first number: " num1
+read -p "Enter the second number: " num2
+	
+result1=$(echo "$num1 + $num2" | bc) 	
+result2=$(echo "$num1 - $num2" | bc) 	
+result3=$(echo "$num1 * $num2" | bc) 	
+if [ "$num2" == "0" ]; then
+	echo "Division by 0 not possible"
+	exit 1
+fi
+result4=$(echo "scale=2; $num1 / $num2" | bc)
+
+
+echo "Addition = $result1"
+echo "Subtraction = $result2"
+echo "Multiplication = $result3"
+echo "Division = $result4"
+
+
+#10. Write a script to calculate the square and cube of a number entered by the user.
+
+#!/bin/bash
+
+read -p "Enter the number: " num
+	
+result1=$(echo "$num*$num" | bc) 
+result2=$(echo "$num*$num*$num" | bc)	
+
+echo "Sqaure of the number : $result1"
+echo "Cube of the number : $result2"
+
+
+#11. Create a script that finds the remainder (modulus) when one number is divided by another.
+
+#!/bin/bash
+
+read -p "Enter the dividend: " dividend
+read -p "Enter the divisor: " divisor
+
+remainder=$((dividend%divisor))
+
+echo "Remainder when $dividend is divded bu $divisor = $remainder"
+
+#12. Write a script that takes a total number of minutes and converts it into "X hours and Y minutes" format.
+
+#!/bin/bash
+
+read -p "Enter the total timing in minutes: " total_minutes
+
+hours=$((total_minutes/60))
+rem_min=$((total_minutes%60))
+
+echo "The given time $total_minutes min is = $hours hr and $rem_min min"
+
+
+#13. Write a script that checks if a number entered by the user is positive, negative, or zero.
+
+#!/bin/bash
+
+read -p "Enter the number: " num
+
+if [ $num -gt 0 ]
+then
+	echo "The number is positive"
+elif [ $num -lt 0 ]
+then
+	echo "The number is negative"
+elif [ $num -eq 0 ]
+then
+	echo "The number is zero"
+fi
+
+
+#14. Create a script that asks for a number and determines if it is even or odd.
+
+#!/bin/bash
+
+read -p "Enter the number: " num
+
+if (( $num%2==0 ))
+then
+	echo "The number is Even number"
+else
+	echo "The numner is odd number"
+fi
+
+
+#15. Write a script that checks if a user is eligible to vote (age 18 or older).
+
+#!/bin/bash
+
+read -p "Enter the user age: " age
+
+if (( $age >= 18 ))
+then
+	echo "Then the user is eligible for voting"
+else
+	echo "Then the user is not eligible for voting"
+fi
+
+
+#16. Create a script that compares two numbers and prints which one is larger.
+
+#!/bin/bash
+
+read -p "Enter the first number: " num1
+read -p "Enter the second number: " num2
+
+if (( $num1 > num2 ))
+then
+	echo "Then the larger number is first number: $num1"
+else
+	echo "Then the larger number is second number: $num2"
+fi
+
+
+#17. Write a "Pass/Fail" script: if a score is 50 or above, print "Pass", otherwise "Fail".
+
+#!/bin/bash
+
+read -p "Enter the marks obtained by student: " marks
+
+if [ "$marks" -ge 50 ]; then 
+	echo 'Student is Passed'		
+elif [ "$marks" -lt 50 ]; then
+	echo 'Student is Failed'
+fi
+
+
+#18. Create a script that checks if a specific file (input by the user) exists on the system.
+
+#!/bin/bash
+
+read -p "Enter the marks obtained by student: " filename
+
+if [ -f "$filename" ]; then 
+	echo "File exists on system"		
+else
+	echo "File doesn't on system"
+fi
+
+
+#19. Write a script that asks for a password and prints "Access Granted" if it matches "Secret123", and "Access Denied" otherwise.
+
+#!/bin/bash
+
+read -p "Enter the password: " password
+
+if [ $password = "Secret123" ]; then 
+	echo "Access Granted"		
+else
+	echo "Access Denied"
+fi
+
+
+#20. Create a script that checks if a given year is a leap year.
+
+#!/bin/bash
+
+read -p "Enter the year: " year
+
+if (( ($year%4 ==0 && $year%100 != 0) || ($year%400 == 0) )); then 
+	echo "This $year is leap year"		
+else
+	echo "This $year is not year"
+fi
+
+
+#21. Write a script that takes a numerical grade (0-100) and prints the letter grade (A, B, C, D, or F) using `elif`.
+
+#!/bin/bash
+
+read -p "Enter the marks obtained by student: " marks
+
+if [ "$marks" -ge 90 ]; then 
+	echo 'Grade obtained = A'		
+elif [ "$marks" -gt 80 ]; then
+	echo 'Grade obtained = B'
+elif [ "$marks" -gt 65 ]; then
+	echo 'Grade obtained = C'
+elif [ "$marks" -gt 55 ]; then
+	echo 'Grade obtained = D'
+elif [ "$marks" -gt 40 ]; then
+	echo 'Grade obtained = E'
+elif [ "$marks" -lt 40 ]; then
+	echo 'Grade obtained = F'
+fi
+
+
+#22. Create a script that asks for a username; if the username is "admin", it asks for a password; otherwise, it exits.
+
+#!/bin/bash
+
+read -p "Enter the username: " username
+
+if [ $username = "admin" ]; then 
+	echo "	Enter the Password"
+	read -s password
+	echo
+	echo "Password Entered"		
+else
+	echo "Access Denied"
+fi
+
+
+#23. Write a script that checks if a string entered by the user is empty or not.
+
+#!/bin/bash
+
+read -p "Enter the string: " str
+
+if [ -z "$str" ]; then 
+	echo "String is Empty"		
+else
+	echo "String is not Empty"
+fi
+
+
+#24. Create a simple calculator where the user enters two numbers and an operator (+ or -) to get the result.
+
+#Simple calculator
+#!/bin/bash
+
+read -p "Enter the first number: " num1
+read -p "Enter the second number: " num2
+read -p "Enter the operator (+,-): " op
+
+#check each condition using if/elif
+if [ "$op" == "+" ]; then 	
+	result=$(echo "$num1 + $num2" | bc)
+elif [ "$op" == "-" ]; then 	
+	result=$(echo "$num1 - $num2" | bc)
+else 
+	echo "Invalid operator selected."
+	exit 1
+fi
+
+echo "Result = $result"
+
+
+#25. Write a script that checks if a user-provided path is a file or a directory.
+
+#!/bin/bash
+
+read -p "Enter the path: " path
+
+if [ -f "$path" ]; then 
+	echo "This is a file"		
+elif [ -d "$path" ]; then
+	echo "This is the directory"
+else
+	echo "This path does not exists"
+fi
+
